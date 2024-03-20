@@ -35,7 +35,7 @@ jobs:
           image: ${{ env.IMAGE_NAME }}
           # todo autogenerate tags
           tags: |
-            0.1.2
+            0.1.3
           # pass args to Containerfile using `ARG` statements
           # build-args: |
           #   ARG_NAME=ARG_VALUE
