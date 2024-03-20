@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 # Install common utilities from distribution package repository
 RUN apt-get update && apt-get install -y \
-    wget
+    wget git vim htop build-essential
 
 
 # Install third-party EDA tools
