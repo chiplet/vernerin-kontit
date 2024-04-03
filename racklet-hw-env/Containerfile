@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM ubuntu:23.10
 
 # Install common utilities from distribution package repository
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
