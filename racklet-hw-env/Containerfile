@@ -2,7 +2,7 @@ FROM ubuntu:24.04
 
 # Install common utilities from distribution package repository
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    curl wget git vim htop pkg-config build-essential zip \
+    curl wget git git-lfs vim htop pkg-config build-essential zip \
     openssl libssl-dev
 
 
