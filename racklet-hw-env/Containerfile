@@ -2,9 +2,15 @@ FROM ubuntu:23.10
 
 # Install common utilities from distribution package repository
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    curl wget git git-lfs vim htop pkg-config build-essential zip \
-    openssl libssl-dev
+    zsh curl wget git git-lfs vim htop pkg-config build-essential zip \
+    openssl libssl-dev openjdk-17-jdk
 
+# Install sbt (scala build tool)
+RUN echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | tee /etc/apt/sources.list.d/sbt.list \
+    && echo "deb https://repo.scala-sbt.org/scalasbt/debian /" | tee /etc/apt/sources.list.d/sbt_old.list \
+    && curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | apt-key add \
+    && apt-get update \
+    && apt-get install sbt
 
 # Install third-party EDA tools
 RUN mkdir /prog
@@ -33,3 +39,5 @@ RUN wget -q https://gitlab.com/api/v4/projects/42073614/packages/generic/surfer/
 
 # compile from source (not ideal due to large rust build directory)
 # RUN cargo install --git https://gitlab.com/surfer-project/surfer surfer
+
+ENTRYPOINT [ "/bin/zsh" ]
