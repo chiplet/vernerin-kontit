@@ -2,8 +2,8 @@ FROM ubuntu:23.10
 
 # Install common utilities from distribution package repository
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    zsh curl wget git git-lfs vim htop pkg-config build-essential zip \
-    openssl libssl-dev openjdk-17-jdk
+    zsh curl wget git git-lfs vim htop pkg-config build-essential gawk zip \
+    openssl libssl-dev openjdk-17-jdk python3.11-venv
 
 # Install sbt (scala build tool)
 RUN echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | tee /etc/apt/sources.list.d/sbt.list \
